@@ -1,0 +1,8 @@
+- name: Create a folder in Windows VM
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Create folder on Windows VM
+      ansible.windows.win_file:
+        path: "C:\\temp\\myfolder"
+        state: directory
