@@ -9,10 +9,15 @@
 
     - name: Check if service information is available
       debug:
-        msg: "Service status not found or error in retrieving status" 
+        msg: "Service status not found or error in retrieving status"
       when: service_status is not defined or service_status.services | length == 0
+
+    - name: Display the full service status
+      debug:
+        msg: "Full service status data: {{ service_status }}"
+      when: service_status is defined and service_status.services | length > 0
 
     - name: Display the MSSQLSERVER service status
       debug:
-        msg: "MSSQLSERVER service status: {{ service_status.services[0].status }}"
+        msg: "MSSQLSERVER service status: {{ service_status.services[0].state }}"
       when: service_status is defined and service_status.services | length > 0
