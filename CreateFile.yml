@@ -1,3 +1,4 @@
+---
 - name: Create a folder in Windows VM
   hosts: all
   gather_facts: no
