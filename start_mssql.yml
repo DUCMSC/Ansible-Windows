@@ -1,18 +1,14 @@
 ---
-- name: Start MSSQLSERVER Service
+- name: Stop MSSQLSERVER Service
   hosts: all
   tasks:
-    - name: Start MSSQLSERVER service
+    - name: Stop MSSQLSERVER service with dependent services
       ansible.windows.win_service:
         name: MSSQLSERVER
-        state: started
-      register: start_service_status
+        state: stopped
+        force_dependent_services: yes
+      register: stop_service_result
 
-    - name: Display current MSSQLSERVER service status (after starting)
-      ansible.windows.win_service_info:
-        name: MSSQLSERVER
-      register: service_status
-
-    - name: Show the status of the MSSQLSERVER service after starting
+    - name: Display the result of stopping MSSQLSERVER service
       debug:
-        var: service_status
+        msg: "{{ stop_service_result }}"
