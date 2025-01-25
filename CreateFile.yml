@@ -5,5 +5,5 @@
   tasks:
     - name: Create folder on Windows VM
       ansible.windows.win_file:
-        path: "G:\\myfolder"
+        path: "G:\myfolder"
         state: directory
