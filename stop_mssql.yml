@@ -2,11 +2,11 @@
 - name: Stop MSSQLSERVER Service
   hosts: all
   tasks:
-    - name: Stop MSSQLSERVER service
+    - name: Stop MSSQLSERVER service with dependent services
       ansible.windows.win_service:
         name: MSSQLSERVER
         state: stopped
-        force: yes
+        force_dependent_services: yes
       register: stop_service_result
 
     - name: Display the result of stopping MSSQLSERVER service
