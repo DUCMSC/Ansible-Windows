@@ -7,6 +7,12 @@
         name: MSSQLSERVER
       register: service_status
 
-    - name: Display the service status
+    - name: Check if service information is available
       debug:
-        msg: "MSSQLSERVER service status: {{ service_status }}"
+        msg: "Service status not found or error in retrieving status" 
+      when: service_status is not defined or service_status.services | length == 0
+
+    - name: Display the MSSQLSERVER service status
+      debug:
+        msg: "MSSQLSERVER service status: {{ service_status.services[0].status }}"
+      when: service_status is defined and service_status.services | length > 0
