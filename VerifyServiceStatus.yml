@@ -3,5 +3,5 @@
   hosts: all
   tasks:
     - name: Get the service status
-      win_service_info:
+      ansible.windows.win_service_info:
         name: MSSQLSERVER
