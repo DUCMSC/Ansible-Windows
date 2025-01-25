@@ -6,13 +6,9 @@
       ansible.windows.win_service:
         name: MSSQLSERVER
         state: stopped
-      register: stop_service_status
+        force: yes
+      register: stop_service_result
 
-    - name: Display current MSSQLSERVER service status (after stopping)
-      ansible.windows.win_service_info:
-        name: MSSQLSERVER
-      register: service_status
-
-    - name: Show the status of the MSSQLSERVER service after stopping
+    - name: Display the result of stopping MSSQLSERVER service
       debug:
-        var: service_status
+        msg: "{{ stop_service_result }}"
