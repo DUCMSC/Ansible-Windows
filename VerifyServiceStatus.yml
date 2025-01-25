@@ -5,3 +5,8 @@
     - name: Get the service status
       ansible.windows.win_service_info:
         name: MSSQLSERVER
+      register: service_status
+
+    - name: Display the service status
+      debug:
+        var: service_status
