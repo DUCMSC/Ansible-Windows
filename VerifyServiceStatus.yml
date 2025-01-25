@@ -1,5 +1,5 @@
 ---
-- name: Check service status
+- name: Check MSSQLSERVER Service status
   hosts: all
   tasks:
     - name: Get the service status
@@ -9,4 +9,4 @@
 
     - name: Display the service status
       debug:
-        var: service_status
+        msg: "MSSQLSERVER service status: {{ service_status }}"
