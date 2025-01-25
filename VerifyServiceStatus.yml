@@ -1,0 +1,7 @@
+---
+- name: Check service status
+  hosts: all
+  tasks:
+    - name: Get the service status
+      win_service_info:
+        name: MSSQLSERVER
